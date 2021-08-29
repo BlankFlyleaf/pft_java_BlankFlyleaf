@@ -21,8 +21,8 @@ public class PointTest {
 
   @Test
   public void testIsX_Same() {
-    Point p1 = new Point(2, 5);
-    Point p2 = new Point(4, 5);
+    Point p1 = new Point(5, 2);
+    Point p2 = new Point(5, 4);
     Assert.assertSame(p1.x, p2.x);
   }
 }
