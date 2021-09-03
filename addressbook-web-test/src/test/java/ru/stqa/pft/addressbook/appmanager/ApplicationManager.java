@@ -1,77 +1,40 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LoginInfo;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  public WebDriver wd;
+  private FirefoxDriver wd;
+  private NavigationHelper navigationHelper;
+  private GroupHelper groupHelper;
+  private SessionHelper sessionHelper;
 
   public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
-    Login(new LoginInfo("admin", "secret"));
-  }
-
-  public void Login(LoginInfo loginInfo) {
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(loginInfo.getUsername());
-    wd.findElement(By.id("LoginForm")).click();
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(loginInfo.getPassword());
-    wd.findElement(By.xpath("//input[@value='Login']")).click();
-  }
-
-  public void returnToGroupPage() {
-    wd.findElement(By.linkText("group page")).click();
-  }
-
-  public void submitGroup() {
-    wd.findElement(By.name("submit")).click();
-  }
-
-  public void fillGroupForm(GroupData groupData) {
-    wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.xpath("//form[@action='/addressbook/group.php']")).click();
-    wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    wd.findElement(By.name("group_header")).click();
-    wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    wd.findElement(By.name("group_footer")).click();
-    wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-  }
-
-  public void createNewGroup() {
-    wd.findElement(By.name("new")).click();
-  }
-
-  public void goToGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
+    groupHelper = new GroupHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
+    sessionHelper = new SessionHelper(wd);
+    sessionHelper.Login(new LoginInfo("admin", "secret"));
   }
 
   public void logOutStop() {
-    logOut();
+    sessionHelper.logOut();
     wd.quit();
   }
 
-  private void logOut() {
-    wd.findElement(By.linkText("Logout")).click();
+  public GroupHelper getGroupHelper() {
+    return groupHelper;
   }
 
-  public void deleteSelectedGroup() {
-    wd.findElement(By.name("delete")).click();
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 
-  public void selectRandomGroup() {
-    wd.findElement(By.name("selected[]")).click();
+  public SessionHelper getSessionHelper() {
+    return sessionHelper;
   }
 }
