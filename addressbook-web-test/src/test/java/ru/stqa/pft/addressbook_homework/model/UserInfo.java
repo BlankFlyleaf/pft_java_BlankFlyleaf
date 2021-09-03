@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook_homework;
+package ru.stqa.pft.addressbook_homework.model;
 
 public class UserInfo {
   private final String name;

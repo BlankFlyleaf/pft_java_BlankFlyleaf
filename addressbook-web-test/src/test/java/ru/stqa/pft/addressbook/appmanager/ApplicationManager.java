@@ -18,7 +18,7 @@ public class ApplicationManager {
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
-    sessionHelper.Login(new LoginInfo("admin", "secret"));
+    sessionHelper.logIn(new LoginInfo("admin", "secret"));
   }
 
   public void logOutStop() {
@@ -33,8 +33,5 @@ public class ApplicationManager {
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
   }
-
-  public SessionHelper getSessionHelper() {
-    return sessionHelper;
-  }
 }
+
