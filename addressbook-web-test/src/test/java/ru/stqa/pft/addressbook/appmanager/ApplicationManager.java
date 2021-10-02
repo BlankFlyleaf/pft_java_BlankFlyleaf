@@ -39,5 +39,9 @@ public class ApplicationManager {
   public UserHelper getUserHelper() {
     return userHelper;
   }
+
+  public SessionHelper getSessionHelper() {
+    return sessionHelper;
+  }
 }
 

@@ -31,4 +31,12 @@ public class GroupHelper extends HelperBase {
   public void selectRandomGroup() {
     click(By.name("selected[]"));
   }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
+
+  public void updateGroup() {
+    click(By.name("update"));
+  }
 }

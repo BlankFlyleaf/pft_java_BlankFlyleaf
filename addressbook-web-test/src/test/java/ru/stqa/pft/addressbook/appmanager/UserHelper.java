@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.UserInfo;
+import org.openqa.selenium.NoAlertPresentException;
 
 public class UserHelper extends HelperBase {
   public UserHelper(FirefoxDriver wd) {
@@ -10,7 +11,7 @@ public class UserHelper extends HelperBase {
   }
 
   public void submitUser() {
-    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
   public void fillUserInfo(UserInfo userInfo) {
@@ -25,5 +26,21 @@ public class UserHelper extends HelperBase {
     type(By.name("email"), userInfo.getEmail());
     choose(userInfo.getDay(), By.name("bday"));
     choose(userInfo.getMonth(), By.name("bmonth"));
+  }
+
+  public void updateUser() {
+    click(By.xpath("//div[@id='content']/form/input[22]"));
+  }
+
+  public void selectUser() {
+    click(By.name("selected[]"));
+  }
+
+  public void modificateUser() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void deleteUser() {
+    click(By.xpath("//input[@value='Delete']"));
   }
 }
