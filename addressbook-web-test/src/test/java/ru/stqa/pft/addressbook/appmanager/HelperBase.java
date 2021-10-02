@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class HelperBase {
   protected FirefoxDriver wd;
@@ -18,5 +19,9 @@ public class HelperBase {
 
   protected void click(By locator) {
     wd.findElement(locator).click();
+  }
+
+  protected void choose(String day, By locator) {
+    new Select(wd.findElement(locator)).selectByVisibleText(day);
   }
 }
