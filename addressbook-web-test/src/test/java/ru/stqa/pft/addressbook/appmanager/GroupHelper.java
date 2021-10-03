@@ -10,8 +10,12 @@ public class GroupHelper extends HelperBase {
     super(wd);
   }
 
-  public void submitGroup() {
-    click(By.name("submit"));
+  public void createNewGroup() {
+    click(By.name("new"));
+  }
+
+  public void selectRandomGroup() {
+    click(By.name("selected[]"));
   }
 
   public void fillGroupForm(GroupData groupData) {
@@ -20,23 +24,47 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void createNewGroup() {
-    click(By.name("new"));
+  public void initGroupModification() {
+    click(By.name("edit"));
   }
 
   public void deleteSelectedGroup() {
     click(By.name("delete"));
   }
 
-  public void selectRandomGroup() {
-    click(By.name("selected[]"));
-  }
-
-  public void initGroupModification() {
-    click(By.name("edit"));
+  public void submitGroup() {
+    click(By.name("submit"));
   }
 
   public void updateGroup() {
     click(By.name("update"));
+  }
+
+  public void returnToGroupPage() {
+    click(By.linkText("group page"));
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void getCreatedGroup(GroupData group) {
+    createNewGroup();
+    fillGroupForm(group);
+    submitGroup();
+    returnToGroupPage();
+  }
+
+  public void getUpdatedGroup(GroupData group) {
+    initGroupModification();
+    fillGroupForm(group);
+    updateGroup();
+    returnToGroupPage();
+  }
+
+  public void getDeletedGroup() {
+    selectRandomGroup();
+    deleteSelectedGroup();
+    returnToGroupPage();
   }
 }

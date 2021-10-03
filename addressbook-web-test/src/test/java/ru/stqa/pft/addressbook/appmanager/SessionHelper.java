@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.LoginInfo;
 
@@ -20,5 +19,4 @@ public class SessionHelper extends HelperBase {
   protected void logOut() {
     click(By.linkText("Logout"));
   }
-
 }
