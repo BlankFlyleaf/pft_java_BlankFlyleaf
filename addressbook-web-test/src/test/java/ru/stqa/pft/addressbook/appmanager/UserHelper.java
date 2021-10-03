@@ -40,10 +40,6 @@ public class UserHelper extends HelperBase {
         }
     }
 
-    public void updateUser() {
-        click(By.xpath("//div[@id='content']/form/input[22]"));
-    }
-
     public void modificateUser() {
         click(By.xpath("//img[@alt='Edit']"));
     }
@@ -54,6 +50,10 @@ public class UserHelper extends HelperBase {
 
     public void submitUser() {
         click(By.xpath("//div[@id='content']/form/input[21]"));
+    }
+
+    public void updateUser() {
+        click(By.xpath("//div[@id='content']/form/input[22]"));
     }
 
     public void returnToUserPage() {
