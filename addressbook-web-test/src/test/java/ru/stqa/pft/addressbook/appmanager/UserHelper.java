@@ -1,12 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.UserInfo;
-import org.openqa.selenium.NoAlertPresentException;
 
 public class UserHelper extends HelperBase {
-  public UserHelper(FirefoxDriver wd) {
+  public UserHelper(WebDriver wd) {
     super(wd);
   }
 
