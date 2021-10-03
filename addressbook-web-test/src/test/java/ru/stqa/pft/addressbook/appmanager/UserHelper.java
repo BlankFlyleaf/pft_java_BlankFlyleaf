@@ -2,6 +2,8 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.UserInfo;
 
 public class UserHelper extends HelperBase {
@@ -13,7 +15,7 @@ public class UserHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillUserInfo(UserInfo userInfo) {
+  public void fillUserInfo(UserInfo userInfo, boolean creation) {
     type(By.name("firstname"), userInfo.getName());
     type(By.name("middlename"), userInfo.getMiddlename());
     type(By.name("lastname"), userInfo.getLastname());
@@ -25,7 +27,13 @@ public class UserHelper extends HelperBase {
     type(By.name("email"), userInfo.getEmail());
     choose(userInfo.getDay(), By.name("bday"));
     choose(userInfo.getMonth(), By.name("bmonth"));
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userInfo.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
+
 
   public void updateUser() {
     click(By.xpath("//div[@id='content']/form/input[22]"));

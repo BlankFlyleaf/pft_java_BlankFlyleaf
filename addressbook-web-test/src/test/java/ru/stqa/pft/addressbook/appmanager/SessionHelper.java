@@ -21,12 +21,4 @@ public class SessionHelper extends HelperBase {
     click(By.linkText("Logout"));
   }
 
-  public boolean isAlert() {
-    try {
-      wd.switchTo().alert().accept();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
 }

@@ -12,8 +12,9 @@ public class UserInfo {
   private final String day;
   private final String month;
   private final String year;
+  private String group;
 
-  public UserInfo(String name, String middlename, String lastname, String company, String address, String home, String mobile, String email, String day, String month, String year) {
+  public UserInfo(String name, String middlename, String lastname, String company, String address, String home, String mobile, String email, String day, String month, String year, String group) {
     this.name = name;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -25,6 +26,7 @@ public class UserInfo {
     this.day = day;
     this.month = month;
     this.year = year;
+    this.group = group;
   }
 
   public String getName() {
@@ -69,5 +71,9 @@ public class UserInfo {
 
   public String getYear() {
     return year;
+  }
+
+  public String getGroup() {
+    return group;
   }
 }
