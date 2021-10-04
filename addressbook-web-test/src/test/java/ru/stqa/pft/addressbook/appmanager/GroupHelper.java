@@ -14,8 +14,8 @@ public class GroupHelper extends HelperBase {
     click(By.name("new"));
   }
 
-  public void selectRandomGroup() {
-    click(By.name("selected[]"));
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void fillGroupForm(GroupData groupData) {
@@ -63,7 +63,6 @@ public class GroupHelper extends HelperBase {
   }
 
   public void getDeletedGroup() {
-    selectRandomGroup();
     deleteSelectedGroup();
     returnToGroupPage();
   }
