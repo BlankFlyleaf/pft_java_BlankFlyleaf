@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.UserInfo;
-import org.openqa.selenium.NotFoundException;
-
 
 public class UserHelper extends HelperBase {
     public UserHelper(WebDriver wd) {
