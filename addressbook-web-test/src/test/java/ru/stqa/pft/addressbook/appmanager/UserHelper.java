@@ -2,17 +2,21 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.UserInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserHelper extends HelperBase {
     public UserHelper(WebDriver wd) {
         super(wd);
     }
 
-    public void selectUser() {
-        click(By.name("selected[]"));
+    public void selectUser(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void goToUserCreation() {
@@ -63,14 +67,12 @@ public class UserHelper extends HelperBase {
     }
 
     public void getCreatedUser(UserInfo user) {
-        goToUserCreation();
         fillUserInfo(user, true);
         submitUser();
         returnToUserPage();
     }
 
     public void getUpdatedUser(UserInfo user) {
-        selectUser();
         modificateUser();
         fillUserInfo(user, false);
         updateUser();
@@ -78,8 +80,21 @@ public class UserHelper extends HelperBase {
     }
 
     public void getDeletedUser() {
-        selectUser();
         deleteUser();
         isAlert();
+    }
+
+    public List<UserInfo> getUserList() {
+        List<UserInfo> users = new ArrayList<UserInfo>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            List<WebElement> cells = element.findElements();
+            String name =
+                    String lastname =
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            UserInfo user = new UserInfo(name, lastname, null, null, null, null, null, null, null, null, null, null, id);
+            users.add(user);
+        }
+        return users;
     }
 }

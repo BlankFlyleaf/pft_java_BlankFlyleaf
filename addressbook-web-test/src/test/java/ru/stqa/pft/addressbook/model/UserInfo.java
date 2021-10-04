@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.util.Objects;
+
 public class UserInfo {
     private final String name;
     private final String middlename;
@@ -13,11 +15,12 @@ public class UserInfo {
     private final String month;
     private final String year;
     private String group;
+    private int id;
 
-    public UserInfo(String name, String middlename, String lastname, String company, String address, String home, String mobile, String email, String day, String month, String year, String group) {
+    public UserInfo(String name, String lastname, String middlename, String company, String address, String home, String mobile, String email, String day, String month, String year, String group) {
         this.name = name;
-        this.middlename = middlename;
         this.lastname = lastname;
+        this.middlename = middlename;
         this.company = company;
         this.address = address;
         this.home = home;
@@ -27,6 +30,23 @@ public class UserInfo {
         this.month = month;
         this.year = year;
         this.group = group;
+        this.id = Integer.MAX_VALUE;
+    }
+
+    public UserInfo(String name, String lastname, String middlename, String company, String address, String home, String mobile, String email, String day, String month, String year, String group, int id) {
+        this.name = name;
+        this.lastname = lastname;
+        this.middlename = middlename;
+        this.company = company;
+        this.address = address;
+        this.home = home;
+        this.mobile = mobile;
+        this.email = email;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.group = group;
+        this.id = id;
     }
 
     public String getName() {
@@ -76,4 +96,35 @@ public class UserInfo {
     public String getGroup() {
         return group;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserInfo userInfo = (UserInfo) o;
+        return Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, lastname);
+    }
+
+
 }
