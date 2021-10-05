@@ -15,15 +15,15 @@ public class UserHelper extends HelperBase {
         super(wd);
     }
 
-    public void selectUser(int index) {
+    public void select(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void goToUserCreation() {
+    public void addNew() {
         click(By.linkText("add new"));
     }
 
-    public void fillUserInfo(UserInfo userInfo, boolean creation) {
+    public void fillInfo(UserInfo userInfo, boolean creation) {
         type(By.name("firstname"), userInfo.getName());
         type(By.name("middlename"), userInfo.getMiddlename());
         type(By.name("lastname"), userInfo.getLastname());
@@ -42,7 +42,7 @@ public class UserHelper extends HelperBase {
         }
     }
 
-    public void modificateUser(int index) {
+    public void modificate(int index) {
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
 
@@ -58,11 +58,11 @@ public class UserHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form/input[22]"));
     }
 
-    public void returnToUserPageOnModification() {
+    public void returnHomePage() {
         click(By.linkText("home page"));
     }
 
-    public void returnToUserPageOnDelete() {
+    public void returnHome() {
         click(By.linkText("home"));
     }
 
@@ -70,25 +70,28 @@ public class UserHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void getCreatedUser(UserInfo user) {
-        fillUserInfo(user, true);
+    public void create(UserInfo user) {
+        addNew();
+        fillInfo(user, true);
         submitUser();
-        returnToUserPageOnModification();
+        returnHomePage();
     }
 
-    public void getUpdatedUser(UserInfo user) {
-        fillUserInfo(user, false);
+    public void update(int index, UserInfo user) {
+        modificate(index);
+        fillInfo(user, false);
         updateUser();
-        returnToUserPageOnModification();
+        returnHomePage();
     }
 
-    public void getDeletedUser() {
+    public void delete(int index) {
+        select(index);
         deleteUser();
         isAlert();
-        returnToUserPageOnDelete();
+        returnHome();
     }
 
-    public List<UserInfo> getUserList() {
+    public List<UserInfo> list() {
         List<UserInfo> users = new ArrayList<UserInfo>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {

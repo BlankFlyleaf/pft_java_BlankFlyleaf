@@ -14,33 +14,33 @@ public class GroupHelper extends HelperBase {
         super(wd);
     }
 
-    public void createNewGroup() {
+    public void createNew() {
         click(By.name("new"));
     }
 
-    public void selectGroup(int index) {
+    public void select(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void fillGroupForm(GroupData groupData) {
+    public void fill(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
         type(By.name("group_footer"), groupData.getFooter());
     }
 
-    public void initGroupModification() {
+    public void initModification() {
         click(By.name("edit"));
     }
 
-    public void deleteSelectedGroup() {
+    public void deleteChoise() {
         click(By.name("delete"));
     }
 
-    public void submitGroup() {
+    public void submit() {
         click(By.name("submit"));
     }
 
-    public void updateGroup() {
+    public void update() {
         click(By.name("update"));
     }
 
@@ -53,23 +53,23 @@ public class GroupHelper extends HelperBase {
     }
 
     public void create(GroupData group) {
-        createNewGroup();
-        fillGroupForm(group);
-        submitGroup();
+        createNew();
+        fill(group);
+        submit();
         returnToGroupPage();
     }
 
     public void modify(int index, GroupData group) {
-        selectGroup(index);
-        initGroupModification();
-        fillGroupForm(group);
-        updateGroup();
+        select(index);
+        initModification();
+        fill(group);
+        update();
         returnToGroupPage();
     }
 
     public void delete(int index) {
-        selectGroup(index);
-        deleteSelectedGroup();
+        select(index);
+        deleteChoise();
         returnToGroupPage();
     }
 
