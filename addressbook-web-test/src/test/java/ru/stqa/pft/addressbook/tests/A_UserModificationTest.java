@@ -21,7 +21,7 @@ public class A_UserModificationTest extends TestBase {
     public void testUserModificationTest() {
         List<UserInfo> before = app.user().list();
         int index = before.size() - 1;
-        UserInfo user = new UserInfo("Crownslayer", "Reunion", "Palkovna", "Egar", "Voronezh\nSezam street 33", "23", "77012347689", "lalka@egar.com", "21", "September", "1658", null, before.get(before.size() - 1).getId());
+        UserInfo user = new UserInfo("Crownslayer", "Reunion", "Palkovna", "Egar", "Voronezh\nSezam street 33", "23", "77012347689", "lalka@egar.com", "21", "September", "1658", null, before.get(index).getId());
         app.user().update(index, user);
         List<UserInfo> after = app.user().list();
         Assert.assertEquals(after.size(), before.size());
