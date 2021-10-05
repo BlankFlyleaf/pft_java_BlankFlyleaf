@@ -49,13 +49,4 @@ public class HelperBase {
             return false;
         }
     }
-
-    public boolean isThereLalka() {
-        try {
-            wd.switchTo().alert().accept();
-            return true;
-        } catch (NoSuchElementException ex) {
-            return false;
-        }
-    }
 }

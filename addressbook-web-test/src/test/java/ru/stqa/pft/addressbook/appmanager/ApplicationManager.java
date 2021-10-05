@@ -35,7 +35,8 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         userHelper = new UserHelper(wd);
-        sessionHelper.logIn(new LoginInfo("admin", "secret"));
+        sessionHelper.logIn(new LoginInfo()
+                .withUsername("admin").withPassword("secret"));
     }
 
     public void logOutStop() {
