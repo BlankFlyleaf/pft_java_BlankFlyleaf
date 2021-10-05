@@ -6,17 +6,17 @@ import ru.stqa.pft.addressbook.model.LoginInfo;
 
 public class SessionHelper extends HelperBase {
 
-    public SessionHelper(WebDriver wd) {
-        super(wd);
-    }
+  public SessionHelper(WebDriver wd) {
+    super(wd);
+  }
 
-    public void logIn(LoginInfo loginInfo) {
-        type(By.name("user"), loginInfo.getUsername());
-        type(By.name("pass"), loginInfo.getPassword());
-        click(By.xpath("//input[@value='Login']"));
-    }
+  public void logIn(LoginInfo loginInfo) {
+    type(By.name("user"), loginInfo.getUsername());
+    type(By.name("pass"), loginInfo.getPassword());
+    click(By.xpath("//input[@value='Login']"));
+  }
 
-    protected void logOut() {
-        click(By.linkText("Logout"));
-    }
+  protected void logOut() {
+    click(By.linkText("Logout"));
+  }
 }

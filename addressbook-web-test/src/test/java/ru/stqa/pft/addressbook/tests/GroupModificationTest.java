@@ -10,24 +10,24 @@ import java.util.List;
 
 public class GroupModificationTest extends TestBase {
 
-    @Test
-    public void testGroupModification() {
-        app.getNavigationHelper().goToGroupPage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
-        if (!app.getGroupHelper().isThereAGroup()) {
-            app.getGroupHelper().getCreatedGroup(new GroupData("test2", "test2", "test2"));
-        }
-        app.getGroupHelper().selectGroup(before.size() - 1);
-        GroupData group = new GroupData("Lalka", "Lalka", "Lalka", before.get(before.size() - 1).getId());
-        app.getGroupHelper().getUpdatedGroup(group);
-        List<GroupData> after = app.getGroupHelper().getGroupList();
-        Assert.assertEquals(after.size(), before.size());
-
-        before.remove(before.size() - 1);
-        before.add(group);
-        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before, after);
+  @Test
+  public void testGroupModification() {
+    app.getNavigationHelper().goToGroupPage();
+    List<GroupData> before = app.getGroupHelper().getGroupList();
+    if (!app.getGroupHelper().isThereAGroup()) {
+      app.getGroupHelper().getCreatedGroup(new GroupData("test2", "test2", "test2"));
     }
+    app.getGroupHelper().selectGroup(before.size() - 1);
+    GroupData group = new GroupData("Lalka", "Lalka", "Lalka", before.get(before.size() - 1).getId());
+    app.getGroupHelper().getUpdatedGroup(group);
+    List<GroupData> after = app.getGroupHelper().getGroupList();
+    Assert.assertEquals(after.size(), before.size());
+
+    before.remove(before.size() - 1);
+    before.add(group);
+    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
+  }
 }
