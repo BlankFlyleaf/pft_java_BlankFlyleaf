@@ -17,6 +17,7 @@ public class UserModificationTest extends TestBase {
             app.getUserHelper().getCreatedUser(new UserInfo("Amiya", "Arknights", "Lalkovna", "Egar", "Voronezh\nSezam street 33", "23", "77012347689", "lalka@egar.com", "21", "September", "1658", "Lalka"));
         }
         app.getUserHelper().selectUser((before.size() - 1));
+        app.getUserHelper().modificateUser((before.size() - 1));
         UserInfo user = new UserInfo("Crownslayer", "Reunion", "Palkovna", "Egar", "Voronezh\nSezam street 33", "23", "77012347689", "lalka@egar.com", "21", "September", "1658", null, before.get(before.size() - 1).getId());
         app.getUserHelper().getUpdatedUser(user);
         List<UserInfo> after = app.getUserHelper().getUserList();

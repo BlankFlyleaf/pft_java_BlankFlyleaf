@@ -73,7 +73,6 @@ public class UserHelper extends HelperBase {
     }
 
     public void getUpdatedUser(UserInfo user) {
-        modificateUser();
         fillUserInfo(user, false);
         updateUser();
         returnToUserPage();
@@ -87,10 +86,10 @@ public class UserHelper extends HelperBase {
     public List<UserInfo> getUserList() {
         List<UserInfo> users = new ArrayList<UserInfo>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements) {
-            List<WebElement> cells = element.findElements();
-            String name =
-                    String lastname =
+        for (WebElement element : elements){
+            List<WebElement> cells = element.findElements(By.tagName("td"));
+            String name = cells.get(2).getText();
+            String lastname = cells.get(1).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             UserInfo user = new UserInfo(name, lastname, null, null, null, null, null, null, null, null, null, null, id);
             users.add(user);
