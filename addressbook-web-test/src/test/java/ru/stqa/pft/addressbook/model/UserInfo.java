@@ -3,128 +3,157 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class UserInfo {
-    private final String name;
-    private final String middlename;
-    private final String lastname;
-    private final String company;
-    private final String address;
-    private final String home;
-    private final String mobile;
-    private final String email;
-    private final String day;
-    private final String month;
-    private final String year;
-    private String group;
-    private int id;
+  private String name;
+  private String middlename;
+  private String lastname;
+  private String company;
+  private String address;
+  private String home;
+  private String mobile;
+  private String email;
+  private String day;
+  private String month;
+  private String year;
+  private String group;
+  private int id;
 
-    public UserInfo(String name, String lastname, String middlename, String company, String address, String home, String mobile, String email, String day, String month, String year, String group) {
-        this.name = name;
-        this.lastname = lastname;
-        this.middlename = middlename;
-        this.company = company;
-        this.address = address;
-        this.home = home;
-        this.mobile = mobile;
-        this.email = email;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.group = group;
-        this.id = Integer.MAX_VALUE;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public UserInfo(String name, String lastname, String middlename, String company, String address, String home, String mobile, String email, String day, String month, String year, String group, int id) {
-        this.name = name;
-        this.lastname = lastname;
-        this.middlename = middlename;
-        this.company = company;
-        this.address = address;
-        this.home = home;
-        this.mobile = mobile;
-        this.email = email;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.group = group;
-        this.id = id;
-    }
+  public String getMiddlename() {
+    return middlename;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getLastname() {
+    return lastname;
+  }
 
-    public String getMiddlename() {
-        return middlename;
-    }
+  public String getCompany() {
+    return company;
+  }
 
-    public String getLastname() {
-        return lastname;
-    }
+  public String getAddress() {
+    return address;
+  }
 
-    public String getCompany() {
-        return company;
-    }
+  public String getHome() {
+    return home;
+  }
 
-    public String getAddress() {
-        return address;
-    }
+  public String getMobile() {
+    return mobile;
+  }
 
-    public String getHome() {
-        return home;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public String getMobile() {
-        return mobile;
-    }
+  public String getDay() {
+    return day;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getMonth() {
+    return month;
+  }
 
-    public String getDay() {
-        return day;
-    }
+  public String getYear() {
+    return year;
+  }
 
-    public String getMonth() {
-        return month;
-    }
+  public String getGroup() {
+    return group;
+  }
 
-    public String getYear() {
-        return year;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getGroup() {
-        return group;
-    }
+  public UserInfo withId(int id) {
+    this.id = id;
+    return this;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public UserInfo withName(String name) {
+    this.name = name;
+    return this;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public UserInfo withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
 
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
-    }
+  public UserInfo withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
-    }
+  public UserInfo withCompany(String company) {
+    this.company = company;
+    return this;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, lastname);
-    }
+  public UserInfo withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public UserInfo withHome(String home) {
+    this.home = home;
+    return this;
+  }
+
+  public UserInfo withMobile(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  public UserInfo withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public UserInfo withDay(String day) {
+    this.day = day;
+    return this;
+  }
+
+  public UserInfo withMonth(String month) {
+    this.month = month;
+    return this;
+  }
+
+  public UserInfo withYear(String year) {
+    this.year = year;
+    return this;
+  }
+
+  public UserInfo withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  @Override
+  public String toString() {
+    return "UserInfo{" +
+            "name='" + name + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UserInfo userInfo = (UserInfo) o;
+    return Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, lastname);
+  }
 
 
 }

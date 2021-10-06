@@ -9,18 +9,22 @@ import java.util.List;
 
 public class A_UserCreationTest extends TestBase {
 
-    @Test
-    public void testUserCreation() throws Exception {
-        List<UserInfo> before = app.user().list();
-        UserInfo user = new UserInfo("Amiya", "Arknights", "Lalkovna", "Egar", "Voronezh\nSezam street 33", "23", "77012347689", "lalka@egar.com", "21", "September", "1658", "Lalka");
-        app.user().create(user);
-        List<UserInfo> after = app.user().list();
-        Assert.assertEquals(after.size(), before.size() + 1);
+  @Test
+  public void testUserCreation() throws Exception {
+    List<UserInfo> before = app.user().list();
+    UserInfo user = new UserInfo()
+            .withName("Amiya").withMiddlename("Lalkovna").withLastname("Arknights")
+            .withCompany("Egar").withAddress("Voronezh\nSezam street 33").withHome("23")
+            .withMobile("77012347689").withEmail("lalka@egar.com").withGroup("Lalka")
+            .withDay("21").withMonth("September").withYear("1658");
+    app.user().create(user);
+    List<UserInfo> after = app.user().list();
+    Assert.assertEquals(after.size(), before.size() + 1);
 
-        before.add(user);
-        Comparator<? super UserInfo> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before, after);
-    }
+    before.add(user);
+    Comparator<? super UserInfo> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
+  }
 }
