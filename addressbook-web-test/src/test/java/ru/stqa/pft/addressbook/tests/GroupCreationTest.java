@@ -1,35 +1,26 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.Comparator;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTest extends TestBase {
 
-    @BeforeMethod
-    public void ensurePreconditions() {
-        app.goTo().groupPage();
-    }
-
     @Test
     public void testGroupCreationCase() throws Exception {
-        List<GroupData> before = app.group().list();
+        app.goTo().groupPage();
+        Groups before = app.group().all();
         GroupData group = new GroupData()
                 .withName("test2").withHeader("test2").withFooter("test2");
         app.group().create(group);
-        List<GroupData> after = app.group().list();
-        Assert.assertEquals(after.size(), before.size() + 1);
+        Groups after = app.group().all();
 
-        group.withId((after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId()));
-        before.add(group);
-        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before, after);
+        assertThat(after.size(), equalTo(before.size() + 1));
+        assertThat(after, equalTo(
+                before.with(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
 }
 
