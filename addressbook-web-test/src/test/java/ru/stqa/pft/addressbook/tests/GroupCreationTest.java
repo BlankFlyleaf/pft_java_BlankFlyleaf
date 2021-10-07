@@ -9,18 +9,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTest extends TestBase {
 
-  @Test
-  public void testGroupCreationCase() throws Exception {
-    app.goTo().groupPage();
-    Groups before = app.group().all();
-    GroupData group = new GroupData()
-            .withName("test2").withHeader("test2").withFooter("test2");
-    app.group().create(group);
-    Groups after = app.group().all();
+    @Test
+    public void testGroupCreationCase() throws Exception {
+        app.goTo().groupPage();
+        Groups before = app.group().all();
+        GroupData group = new GroupData()
+                .withName("test2").withHeader("test2").withFooter("test2");
+        app.group().create(group);
+        Groups after = app.group().all();
 
-    assertThat(after.size(), equalTo(before.size() + 1));
-    assertThat(after, equalTo(
-            before.with(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-  }
+        assertThat(after.size(), equalTo(before.size() + 1));
+        assertThat(after, equalTo(
+                before.with(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    }
 }
 
