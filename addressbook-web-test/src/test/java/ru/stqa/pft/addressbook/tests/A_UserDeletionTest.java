@@ -15,7 +15,8 @@ public class A_UserDeletionTest extends TestBase {
   public void ensurePreconditions() {
     if (app.user().all().size() == 0) {
       app.user().create(new UserInfo()
-              .withName("Amiya").withLastname("Arknights"));
+              .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
+              .withDay("21").withMonth("September"));
     }
   }
 
