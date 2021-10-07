@@ -55,9 +55,5 @@ public class ApplicationManager {
     public UserHelper user() {
         return userHelper;
     }
-
-    public SessionHelper getSessionHelper() {
-        return sessionHelper;
-    }
 }
 
