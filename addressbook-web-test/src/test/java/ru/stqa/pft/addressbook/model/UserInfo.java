@@ -3,19 +3,19 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class UserInfo {
-  private String name;
-  private String middlename;
-  private String lastname;
-  private String company;
-  private String address;
-  private String home;
-  private String mobile;
-  private String email;
-  private String day;
-  private String month;
-  private String year;
-  private String group;
-  private int id;
+  public String name;
+  public String middlename;
+  public String lastname;
+  public String company;
+  public String address;
+  public String home;
+  public String mobile;
+  public String email;
+  public String day;
+  public String month;
+  public String year;
+  public String group;
+  public int id;
 
   public String getName() {
     return name;

@@ -6,10 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.UserInfo;
+import ru.stqa.pft.addressbook.model.Users;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class UserHelper extends HelperBase {
   public UserHelper(WebDriver wd) {
@@ -88,8 +87,8 @@ public class UserHelper extends HelperBase {
     returnHome();
   }
 
-  public Set<UserInfo> all() {
-    Set<UserInfo> users = new HashSet<UserInfo>();
+  public Users all() {
+    Users users = new Users();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
