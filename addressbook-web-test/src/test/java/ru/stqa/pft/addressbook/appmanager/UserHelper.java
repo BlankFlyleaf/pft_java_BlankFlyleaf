@@ -7,16 +7,17 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.UserInfo;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserHelper extends HelperBase {
   public UserHelper(WebDriver wd) {
     super(wd);
   }
 
-  public void select(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void addNew() {
@@ -42,8 +43,8 @@ public class UserHelper extends HelperBase {
     }
   }
 
-  public void modificate(int index) {
-    wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+  public void modificateById(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
   public void deleteUser() {
@@ -66,10 +67,6 @@ public class UserHelper extends HelperBase {
     click(By.linkText("home"));
   }
 
-  public boolean isThereAUser() {
-    return isElementPresent(By.name("selected[]"));
-  }
-
   public void create(UserInfo user) {
     addNew();
     fillInfo(user, true);
@@ -77,22 +74,22 @@ public class UserHelper extends HelperBase {
     returnHomePage();
   }
 
-  public void update(int index, UserInfo user) {
-    modificate(index);
+  public void update(UserInfo user) {
+    modificateById(user.getId());
     fillInfo(user, false);
     updateUser();
     returnHomePage();
   }
 
-  public void delete(int index) {
-    select(index);
+  public void delete(UserInfo user) {
+    selectById(user.getId());
     deleteUser();
     isAlert();
     returnHome();
   }
 
-  public List<UserInfo> list() {
-    List<UserInfo> users = new ArrayList<UserInfo>();
+  public Set<UserInfo> all() {
+    Set<UserInfo> users = new HashSet<UserInfo>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));

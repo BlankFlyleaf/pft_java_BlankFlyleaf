@@ -5,13 +5,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.UserInfo;
 
-import java.util.List;
+import java.util.Set;
 
 public class A_UserDeletionTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    if (app.user().list().size() == 0) {
+    if (app.user().all().size() == 0) {
       app.user().create(new UserInfo()
               .withName("Amiya").withLastname("Arknights"));
     }
@@ -19,13 +19,13 @@ public class A_UserDeletionTest extends TestBase {
 
   @Test
   public void testUserDeletion() {
-    List<UserInfo> before = app.user().list();
-    int index = before.size() - 1;
-    app.user().delete(index);
-    List<UserInfo> after = app.user().list();
+    Set<UserInfo> before = app.user().all();
+    UserInfo deletedUser = before.iterator().next();
+    app.user().delete(deletedUser);
+    Set<UserInfo> after = app.user().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(index);
+    before.remove(deletedUser);
     Assert.assertEquals(before, after);
   }
 }

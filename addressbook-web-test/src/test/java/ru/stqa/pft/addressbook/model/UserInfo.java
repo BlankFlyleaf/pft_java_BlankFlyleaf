@@ -147,13 +147,11 @@ public class UserInfo {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     UserInfo userInfo = (UserInfo) o;
-    return Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
+    return id == userInfo.id && Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, lastname);
+    return Objects.hash(name, lastname, id);
   }
-
-
 }
