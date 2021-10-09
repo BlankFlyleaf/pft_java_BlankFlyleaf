@@ -16,8 +16,8 @@ public class A_UserPhoneTest extends TestBase {
     if (app.user().all().size() == 0) {
       app.user().create(new UserInfo()
               .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
-              .withDay("21").withMonth("September").withHome("230539")
-              .withMobile("77012347689").withWork("490567"));
+              .withDay("21").withMonth("September")
+              .withHome("230539").withMobile("77012347689").withWork("490567"));
     }
   }
 

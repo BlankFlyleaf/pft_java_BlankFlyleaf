@@ -134,7 +134,7 @@ public class UserHelper extends HelperBase {
       String allPhones = cells.get(5).getText();
       userCashe.add(new UserInfo()
               .withName(name).withLastname(lastname).withId(id)
-              .withAllPhones(allPhones).withAllPhones(allMails).withAddress(address));
+              .withAllPhones(allPhones).withAllMails(allMails).withAddress(address));
     }
     return new Users(userCashe);
   }
