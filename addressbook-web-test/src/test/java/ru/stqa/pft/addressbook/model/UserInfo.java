@@ -11,12 +11,20 @@ public class UserInfo {
   public String home;
   public String mobile;
   public String work;
-  public String email;
+  public String email1;
+  public String email2;
+  public String email3;
   public String day;
   public String month;
   public String year;
   public String group;
+  public String allPhones;
+  public String allMails;
   public int id;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
 
   public String getName() {
     return name;
@@ -50,8 +58,16 @@ public class UserInfo {
     return work;
   }
 
-  public String getEmail() {
-    return email;
+  public String getEmail1() {
+    return email1;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
   }
 
   public String getDay() {
@@ -72,6 +88,20 @@ public class UserInfo {
 
   public int getId() {
     return id;
+  }
+
+  public String getAllMails() {
+    return allMails;
+  }
+
+  public UserInfo withAllMails(String allMails) {
+    this.allMails = allMails;
+    return this;
+  }
+
+  public UserInfo withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
   }
 
   public UserInfo withId(int id) {
@@ -120,7 +150,17 @@ public class UserInfo {
   }
 
   public UserInfo withEmail(String email) {
-    this.email = email;
+    this.email1 = email;
+    return this;
+  }
+
+  public UserInfo withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public UserInfo withEmail3(String email3) {
+    this.email3 = email3;
     return this;
   }
 

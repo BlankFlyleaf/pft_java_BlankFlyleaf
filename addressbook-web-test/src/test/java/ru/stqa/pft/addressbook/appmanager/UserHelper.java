@@ -33,7 +33,9 @@ public class UserHelper extends HelperBase {
     type(By.name("work"), userInfo.getWork());
     type(By.name("mobile"), userInfo.getMobile());
     type(By.name("byear"), userInfo.getYear());
-    type(By.name("email"), userInfo.getEmail());
+    type(By.name("email"), userInfo.getEmail1());
+    type(By.name("email2"), userInfo.getEmail2());
+    type(By.name("email3"), userInfo.getEmail3());
     choose(userInfo.getDay(), By.name("bday"));
     choose(userInfo.getMonth(), By.name("bmonth"));
     if (creation) {
@@ -78,10 +80,15 @@ public class UserHelper extends HelperBase {
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new UserInfo().withId(user.getId()).withName(name).withLastname(lastname)
-            .withHome(home).withMobile(mobile).withWork(work);
-
+            .withHome(home).withMobile(mobile).withWork(work)
+            .withEmail(email).withEmail2(email2).withEmail3(email3)
+            .withAddress(address);
   }
 
   public void create(UserInfo user) {
@@ -120,14 +127,14 @@ public class UserHelper extends HelperBase {
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      String name = cells.get(2).getText();
       String lastname = cells.get(1).getText();
+      String name = cells.get(2).getText();
+      String address = cells.get(3).getText();
+      String allMails = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
-      allPhones.split("\n");
-      String[] phones = cells.get(5).getText().split("\n");
       userCashe.add(new UserInfo()
               .withName(name).withLastname(lastname).withId(id)
-              .withHome(phones[0]).withMobile(phones[1]).withWork(phones[2]));
+              .withAllPhones(allPhones).withAllPhones(allMails).withAddress(address));
     }
     return new Users(userCashe);
   }

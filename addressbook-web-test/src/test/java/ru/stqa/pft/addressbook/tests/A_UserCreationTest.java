@@ -14,8 +14,10 @@ public class A_UserCreationTest extends TestBase {
     Users before = app.user().all();
     UserInfo user = new UserInfo()
             .withName("Amiya").withMiddlename("Lalkovna").withLastname("Arknights")
-            .withCompany("Egar").withAddress("Voronezh\nSezam street 33").withHome("230539")
-            .withMobile("77012347689").withWork("490567").withEmail("lalka@egar.com").withGroup("Lalka")
+            .withAddress("Voronezh\nSezam street 33")
+            .withHome("230539").withMobile("77012347689").withWork("490567")
+            .withEmail("lalka@egar.com").withEmail2("palka@egar.com").withEmail3("lulka@egar.com")
+            .withGroup("Lalka").withCompany("Egar")
             .withDay("21").withMonth("September").withYear("1658");
     app.user().create(user);
 
