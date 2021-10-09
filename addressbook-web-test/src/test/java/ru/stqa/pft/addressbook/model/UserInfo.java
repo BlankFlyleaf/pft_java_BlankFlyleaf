@@ -3,155 +3,165 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class UserInfo {
-    public String name;
-    public String middlename;
-    public String lastname;
-    public String company;
-    public String address;
-    public String home;
-    public String mobile;
-    public String email;
-    public String day;
-    public String month;
-    public String year;
-    public String group;
-    public int id;
+  public String name;
+  public String middlename;
+  public String lastname;
+  public String company;
+  public String address;
+  public String home;
+  public String mobile;
+  public String work;
+  public String email;
+  public String day;
+  public String month;
+  public String year;
+  public String group;
+  public int id;
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getMiddlename() {
-        return middlename;
-    }
+  public String getMiddlename() {
+    return middlename;
+  }
 
-    public String getLastname() {
-        return lastname;
-    }
+  public String getLastname() {
+    return lastname;
+  }
 
-    public String getCompany() {
-        return company;
-    }
+  public String getCompany() {
+    return company;
+  }
 
-    public String getAddress() {
-        return address;
-    }
+  public String getAddress() {
+    return address;
+  }
 
-    public String getHome() {
-        return home;
-    }
+  public String getHome() {
+    return home;
+  }
 
-    public String getMobile() {
-        return mobile;
-    }
+  public String getMobile() {
+    return mobile;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getWork() {
+    return work;
+  }
 
-    public String getDay() {
-        return day;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public String getMonth() {
-        return month;
-    }
+  public String getDay() {
+    return day;
+  }
 
-    public String getYear() {
-        return year;
-    }
+  public String getMonth() {
+    return month;
+  }
 
-    public String getGroup() {
-        return group;
-    }
+  public String getYear() {
+    return year;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public String getGroup() {
+    return group;
+  }
 
-    public UserInfo withId(int id) {
-        this.id = id;
-        return this;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public UserInfo withName(String name) {
-        this.name = name;
-        return this;
-    }
+  public UserInfo withId(int id) {
+    this.id = id;
+    return this;
+  }
 
-    public UserInfo withMiddlename(String middlename) {
-        this.middlename = middlename;
-        return this;
-    }
+  public UserInfo withName(String name) {
+    this.name = name;
+    return this;
+  }
 
-    public UserInfo withLastname(String lastname) {
-        this.lastname = lastname;
-        return this;
-    }
+  public UserInfo withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
 
-    public UserInfo withCompany(String company) {
-        this.company = company;
-        return this;
-    }
+  public UserInfo withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
 
-    public UserInfo withAddress(String address) {
-        this.address = address;
-        return this;
-    }
+  public UserInfo withCompany(String company) {
+    this.company = company;
+    return this;
+  }
 
-    public UserInfo withHome(String home) {
-        this.home = home;
-        return this;
-    }
+  public UserInfo withAddress(String address) {
+    this.address = address;
+    return this;
+  }
 
-    public UserInfo withMobile(String mobile) {
-        this.mobile = mobile;
-        return this;
-    }
+  public UserInfo withHome(String home) {
+    this.home = home;
+    return this;
+  }
 
-    public UserInfo withEmail(String email) {
-        this.email = email;
-        return this;
-    }
+  public UserInfo withMobile(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
 
-    public UserInfo withDay(String day) {
-        this.day = day;
-        return this;
-    }
+  public UserInfo withWork(String work) {
+    this.work = work;
+    return this;
+  }
 
-    public UserInfo withMonth(String month) {
-        this.month = month;
-        return this;
-    }
+  public UserInfo withEmail(String email) {
+    this.email = email;
+    return this;
+  }
 
-    public UserInfo withYear(String year) {
-        this.year = year;
-        return this;
-    }
+  public UserInfo withDay(String day) {
+    this.day = day;
+    return this;
+  }
 
-    public UserInfo withGroup(String group) {
-        this.group = group;
-        return this;
-    }
+  public UserInfo withMonth(String month) {
+    this.month = month;
+    return this;
+  }
 
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
-    }
+  public UserInfo withYear(String year) {
+    this.year = year;
+    return this;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserInfo userInfo = (UserInfo) o;
-        return id == userInfo.id && Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
-    }
+  public UserInfo withGroup(String group) {
+    this.group = group;
+    return this;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, lastname, id);
-    }
+  @Override
+  public String toString() {
+    return "UserInfo{" +
+            "name='" + name + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UserInfo userInfo = (UserInfo) o;
+    return id == userInfo.id && Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, lastname, id);
+  }
 }
