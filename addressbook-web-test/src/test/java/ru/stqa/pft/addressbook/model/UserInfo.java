@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -8,20 +9,35 @@ import java.util.Objects;
 
 @XStreamAlias("users")
 public class UserInfo {
+    @Expose
     public String name;
+    @Expose
     public String middlename;
+    @Expose
     public String lastname;
+    @Expose
     public String company;
+    @Expose
     public String address;
+    @Expose
     public String home;
+    @Expose
     public String mobile;
+    @Expose
     public String work;
+    @Expose
     public String email1;
+    @Expose
     public String email2;
+    @Expose
     public String email3;
+    @Expose
     public String day;
+    @Expose
     public String month;
+    @Expose
     public String year;
+    @Expose
     public String group;
     public String allPhones;
     public String allMails;

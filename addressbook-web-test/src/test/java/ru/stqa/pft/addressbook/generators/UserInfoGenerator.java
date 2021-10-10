@@ -3,6 +3,8 @@ package ru.stqa.pft.addressbook.generators;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.UserInfo;
 
@@ -42,9 +44,19 @@ public class UserInfoGenerator {
             saveAsCsv(users, new File(file));
         } else if (format.equals("xml")) {
             saveAsXML(users, new File(file));
+        } else if (format.equals("json")) {
+            saveAsJson (users, new File(file));
         } else {
             System.out.println("Неизвестный формат файла " + format);
         }
+    }
+
+    private void saveAsJson(List<UserInfo> users, File file) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+        String json = gson.toJson(users);
+        Writer writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
     }
 
     private void saveAsXML(List<UserInfo> users, File file) throws IOException {
