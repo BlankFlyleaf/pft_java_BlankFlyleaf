@@ -22,7 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class A_UserCreationTest extends TestBase {
 
-    @DataProvider
+     @DataProvider
     public Iterator<Object[]> validUsers() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
         File photo = new File("src/test/resources/DioDa.png");
@@ -42,7 +42,7 @@ public class A_UserCreationTest extends TestBase {
         return list.iterator();
     }
 
-    @DataProvider
+     @DataProvider
     public Iterator<Object[]> validUsersXml() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.xml"));
         String xml = "";
@@ -58,7 +58,7 @@ public class A_UserCreationTest extends TestBase {
         return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
 
-    @DataProvider
+     @DataProvider
     public Iterator<Object[]> validUsersJson() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.json"));
         String json = "";
@@ -72,7 +72,7 @@ public class A_UserCreationTest extends TestBase {
         return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
 
-    @Test(dataProvider = "validUsersJson")
+    @Test(dataProvider = "validUsersXml")
     public void testUserCreation(UserInfo user) throws Exception {
         Users before = app.user().all();
         app.user().create(user);

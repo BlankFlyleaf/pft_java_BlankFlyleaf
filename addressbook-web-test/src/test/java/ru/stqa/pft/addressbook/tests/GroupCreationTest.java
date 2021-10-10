@@ -21,7 +21,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTest extends TestBase {
 
-    @DataProvider
+     @DataProvider
     public Iterator<Object[]> validGroups() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
         BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.csv"));
@@ -35,7 +35,7 @@ public class GroupCreationTest extends TestBase {
         return list.iterator();
     }
 
-    @DataProvider
+     @DataProvider
     public Iterator<Object[]> validGroupsXml() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.xml"));
         String xml = "";
@@ -51,7 +51,7 @@ public class GroupCreationTest extends TestBase {
         return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
 
-    @DataProvider
+     @DataProvider
     public Iterator<Object[]> validGroupsJson() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.json"));
         String json = "";
