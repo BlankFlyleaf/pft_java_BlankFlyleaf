@@ -30,8 +30,10 @@ public class A_UserModificationTest extends TestBase {
     UserInfo modifiedUser = before.iterator().next();
     UserInfo user = new UserInfo()
             .withName("Crownslayer").withMiddlename("Palkovna").withLastname("Reunion")
-            .withCompany("Egar").withAddress("Voronezh\nSezam street 33").withHome("23")
-            .withMobile("77012347689").withEmail("lalka@egar.com").withGroup(null).withPhoto(photo)
+            .withCompany("Egar").withAddress("Voronezh\nSezam street 33")
+            .withHome("240539").withMobile("77102347689").withWork("699669")
+            .withEmail("Reunion@egar.com").withEmail2("Did@egar.com").withEmail3("NothingWrong@egar.com")
+            .withGroup(null).withPhoto(photo)
             .withDay("21").withMonth("September").withYear("1658").withId(modifiedUser.getId());
     app.user().update(user);
 
