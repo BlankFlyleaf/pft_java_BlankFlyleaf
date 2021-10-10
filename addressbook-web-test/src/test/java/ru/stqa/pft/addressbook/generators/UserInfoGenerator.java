@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserInfoGenerator {
 
-    @Parameter(names = "-c", description = "Group counts")
+    @Parameter(names = "-c", description = "User counts")
     public int count;
 
     @Parameter(names = "-f", description = "Target File")
