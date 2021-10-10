@@ -54,27 +54,27 @@ public class UserInfoGenerator {
     private void saveAsJson(List<UserInfo> users, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(users);
-        Writer writer = new FileWriter(file);
+        try (Writer writer = new FileWriter(file)) {
         writer.write(json);
-        writer.close();
+        }
     }
 
     private void saveAsXML(List<UserInfo> users, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(UserInfo.class);
         String xml = xstream.toXML(users);
-        Writer writer = new FileWriter(file);
-        writer.write(xml);
-        writer.close();
+        try (Writer writer = new FileWriter(file)) {
+            writer.write(xml);
+        }
     }
 
     private void saveAsCsv(List<UserInfo> users, File file) throws IOException {
-        Writer writer = new FileWriter(file);
-        for (UserInfo user : users) {
-            writer.write(String.format("%s;%s;%s\n",
-                    user.getName(), user.getLastname(), user.getMiddlename()));
+        try (Writer writer = new FileWriter(file)) {
+            for (UserInfo user : users) {
+                writer.write(String.format("%s;%s;%s\n",
+                        user.getName(), user.getLastname(), user.getMiddlename()));
+            }
         }
-        writer.close();
     }
 
     private List<UserInfo> generateUsers(int count) {

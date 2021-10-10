@@ -44,33 +44,36 @@ public class A_UserCreationTest extends TestBase {
 
      @DataProvider
     public Iterator<Object[]> validUsersXml() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.xml"));
-        String xml = "";
-        String line = reader.readLine();
-        while (line != null) {
-            xml += line;
-            line = reader.readLine();
-        }
-        XStream xstream = new XStream();
-        xstream.allowTypes(new Class[]{UserInfo.class});
-        xstream.processAnnotations(UserInfo.class);
-        List<UserInfo> users = (List<UserInfo>) xstream.fromXML(xml);
-        return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
-    }
+         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.xml"))) {
+             String xml = "";
+             String line = reader.readLine();
+             while (line != null) {
+                 xml += line;
+                 line = reader.readLine();
+             }
+             XStream xstream = new XStream();
+             xstream.allowTypes(new Class[]{UserInfo.class});
+             xstream.processAnnotations(UserInfo.class);
+             List<UserInfo> users = (List<UserInfo>) xstream.fromXML(xml);
+             return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
+         }
+     }
 
      @DataProvider
     public Iterator<Object[]> validUsersJson() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.json"));
-        String json = "";
-        String line = reader.readLine();
-        while (line != null) {
-            json += line;
-            line = reader.readLine();
-        }
-        Gson gson = new Gson();
-        List<UserInfo> users = gson.fromJson(json, new TypeToken<List<UserInfo>>(){}.getType());
-        return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
-    }
+         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.json"))) {
+             String json = "";
+             String line = reader.readLine();
+             while (line != null) {
+                 json += line;
+                 line = reader.readLine();
+             }
+             Gson gson = new Gson();
+             List<UserInfo> users = gson.fromJson(json, new TypeToken<List<UserInfo>>() {
+             }.getType());
+             return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
+         }
+     }
 
     @Test(dataProvider = "validUsersXml")
     public void testUserCreation(UserInfo user) throws Exception {
