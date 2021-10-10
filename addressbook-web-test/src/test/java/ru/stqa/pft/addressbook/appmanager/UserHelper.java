@@ -36,6 +36,7 @@ public class UserHelper extends HelperBase {
     type(By.name("email"), userInfo.getEmail1());
     type(By.name("email2"), userInfo.getEmail2());
     type(By.name("email3"), userInfo.getEmail3());
+    attach(By.name("photo"), userInfo.getPhoto());
     choose(userInfo.getDay(), By.name("bday"));
     choose(userInfo.getMonth(), By.name("bmonth"));
     if (creation) {
