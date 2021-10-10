@@ -17,13 +17,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.8'
 }
 
-task testGroups (type:test) {
+task testGroups (type:Test) {
     useTestNG() {
         suites 'src/test/resources/testng-users.xml'
     }
 }
 
-task testUsers (type:test) {
+task testUsers (type:Test) {
     useTestNG() {
         suites 'src/test/resources/testng-users.xml'
     }
