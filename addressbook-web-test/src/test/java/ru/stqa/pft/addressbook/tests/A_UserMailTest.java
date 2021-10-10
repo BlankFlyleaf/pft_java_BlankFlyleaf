@@ -28,7 +28,7 @@ public class A_UserMailTest extends TestBase {
     UserInfo user = app.user().all().iterator().next();
     UserInfo UserinfoFromEditForm = app.user().infoFromEditForm(user);
 
-    assertThat(user.getAllPhones(), equalTo(mergeMails(UserinfoFromEditForm)));
+    assertThat(user.getAllMails(), equalTo(mergeMails(UserinfoFromEditForm)));
     assertThat(user.getAddress(), equalTo(checkAddress(UserinfoFromEditForm)));
   }
 
