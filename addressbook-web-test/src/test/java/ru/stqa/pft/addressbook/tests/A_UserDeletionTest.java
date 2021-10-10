@@ -11,24 +11,24 @@ import static org.testng.Assert.assertEquals;
 
 public class A_UserDeletionTest extends TestBase {
 
-  @BeforeMethod
-  public void ensurePreconditions() {
-    if (app.user().all().size() == 0) {
-      app.user().create(new UserInfo()
-              .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
-              .withDay("21").withMonth("September"));
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if (app.user().all().size() == 0) {
+            app.user().create(new UserInfo()
+                    .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
+                    .withDay("21").withMonth("September"));
+        }
     }
-  }
 
-  @Test
-  public void testUserDeletion() {
-    Users before = app.user().all();
-    UserInfo deletedUser = before.iterator().next();
-    app.user().delete(deletedUser);
+    @Test
+    public void testUserDeletion() {
+        Users before = app.user().all();
+        UserInfo deletedUser = before.iterator().next();
+        app.user().delete(deletedUser);
 
-    assertEquals(app.user().count(), before.size() - 1);
-    Users after = app.user().all();
-    assertThat(after, equalTo(
-            before.without(deletedUser)));
-  }
+        assertEquals(app.user().count(), before.size() - 1);
+        Users after = app.user().all();
+        assertThat(after, equalTo(
+                before.without(deletedUser)));
+    }
 }

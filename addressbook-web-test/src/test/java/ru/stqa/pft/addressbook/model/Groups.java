@@ -7,30 +7,30 @@ import java.util.Set;
 
 public class Groups extends ForwardingSet<GroupData> {
 
-  private Set<GroupData> delegate;
+    private Set<GroupData> delegate;
 
-  public Groups(Groups groups) {
-    this.delegate = new HashSet<GroupData>(groups.delegate);
-  }
+    public Groups(Groups groups) {
+        this.delegate = new HashSet<GroupData>(groups.delegate);
+    }
 
-  public Groups() {
-    this.delegate = new HashSet<>();
-  }
+    public Groups() {
+        this.delegate = new HashSet<>();
+    }
 
-  public Groups with(GroupData group) {
-    Groups groups = new Groups(this);
-    groups.add(group);
-    return groups;
-  }
+    public Groups with(GroupData group) {
+        Groups groups = new Groups(this);
+        groups.add(group);
+        return groups;
+    }
 
-  public Groups without(GroupData group) {
-    Groups groups = new Groups(this);
-    groups.remove(group);
-    return groups;
-  }
+    public Groups without(GroupData group) {
+        Groups groups = new Groups(this);
+        groups.remove(group);
+        return groups;
+    }
 
-  @Override
-  protected Set<GroupData> delegate() {
-    return delegate;
-  }
+    @Override
+    protected Set<GroupData> delegate() {
+        return delegate;
+    }
 }

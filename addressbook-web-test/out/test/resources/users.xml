@@ -1,0 +1,97 @@
+<list>
+  <users>
+    <name>Amiya 0</name>
+    <middlename>Lalkovna 0</middlename>
+    <lastname>Arknights 0</lastname>
+    <company>Egar</company>
+    <address>Voronezh
+Sezam street 33</address>
+    <home>230539</home>
+    <mobile>77012347689</mobile>
+    <work>490567</work>
+    <email1>lalka@egar.com</email1>
+    <email2>palka@egar.com</email2>
+    <email3>lulka@egar.com</email3>
+    <day>21</day>
+    <month>September</month>
+    <year>1658</year>
+    <group>Lalka</group>
+    <photo>src\test\resources\DioDa.png</photo>
+  </users>
+  <users>
+    <name>Amiya 1</name>
+    <middlename>Lalkovna 1</middlename>
+    <lastname>Arknights 1</lastname>
+    <company>Egar</company>
+    <address>Voronezh
+Sezam street 33</address>
+    <home>230539</home>
+    <mobile>77012347689</mobile>
+    <work>490567</work>
+    <email1>lalka@egar.com</email1>
+    <email2>palka@egar.com</email2>
+    <email3>lulka@egar.com</email3>
+    <day>21</day>
+    <month>September</month>
+    <year>1658</year>
+    <group>Lalka</group>
+    <photo>src\test\resources\DioDa.png</photo>
+  </users>
+  <users>
+    <name>Amiya 2</name>
+    <middlename>Lalkovna 2</middlename>
+    <lastname>Arknights 2</lastname>
+    <company>Egar</company>
+    <address>Voronezh
+Sezam street 33</address>
+    <home>230539</home>
+    <mobile>77012347689</mobile>
+    <work>490567</work>
+    <email1>lalka@egar.com</email1>
+    <email2>palka@egar.com</email2>
+    <email3>lulka@egar.com</email3>
+    <day>21</day>
+    <month>September</month>
+    <year>1658</year>
+    <group>Lalka</group>
+    <photo>src\test\resources\DioDa.png</photo>
+  </users>
+  <users>
+    <name>Amiya 3</name>
+    <middlename>Lalkovna 3</middlename>
+    <lastname>Arknights 3</lastname>
+    <company>Egar</company>
+    <address>Voronezh
+Sezam street 33</address>
+    <home>230539</home>
+    <mobile>77012347689</mobile>
+    <work>490567</work>
+    <email1>lalka@egar.com</email1>
+    <email2>palka@egar.com</email2>
+    <email3>lulka@egar.com</email3>
+    <day>21</day>
+    <month>September</month>
+    <year>1658</year>
+    <group>Lalka</group>
+    <photo>src\test\resources\DioDa.png</photo>
+  </users>
+  <users>
+    <name>Amiya 4</name>
+    <middlename>Lalkovna 4</middlename>
+    <lastname>Arknights 4</lastname>
+    <company>Egar</company>
+    <address>Voronezh
+Sezam street 33</address>
+    <home>230539</home>
+    <mobile>77012347689</mobile>
+    <work>490567</work>
+    <email1>lalka@egar.com</email1>
+    <email2>palka@egar.com</email2>
+    <email3>lulka@egar.com</email3>
+    <day>21</day>
+    <month>September</month>
+    <year>1658</year>
+    <group>Lalka</group>
+    <photo>src\test\resources\DioDa.png</photo>
+  </users>
+</list>

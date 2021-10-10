@@ -14,33 +14,33 @@ import static org.testng.Assert.assertTrue;
 
 public class A_UserModificationTest extends TestBase {
 
-  @BeforeMethod
-  public void ensurePreconditions() {
-    if (app.user().all().size() == 0) {
-      app.user().create(new UserInfo()
-              .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
-              .withDay("21").withMonth("September"));
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if (app.user().all().size() == 0) {
+            app.user().create(new UserInfo()
+                    .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
+                    .withDay("21").withMonth("September"));
+        }
     }
-  }
 
-  @Test
-  public void testUserModificationTest() {
-    Users before = app.user().all();
-    File photo = new File("src/test/resources/fine.png");
-    UserInfo modifiedUser = before.iterator().next();
-    UserInfo user = new UserInfo()
-            .withName("Crownslayer").withMiddlename("Palkovna").withLastname("Reunion")
-            .withCompany("Egar").withAddress("Voronezh\nSezam street 33")
-            .withHome("240539").withMobile("77102347689").withWork("699669")
-            .withEmail("Reunion@egar.com").withEmail2("Did@egar.com").withEmail3("NothingWrong@egar.com")
-            .withGroup(null).withPhoto(photo)
-            .withDay("21").withMonth("September").withYear("1658").withId(modifiedUser.getId());
-    app.user().update(user);
+    @Test
+    public void testUserModificationTest() {
+        Users before = app.user().all();
+        File photo = new File("src/test/resources/fine.png");
+        UserInfo modifiedUser = before.iterator().next();
+        UserInfo user = new UserInfo()
+                .withName("Crownslayer").withMiddlename("Palkovna").withLastname("Reunion")
+                .withCompany("Egar").withAddress("Voronezh\nSezam street 33")
+                .withHome("240539").withMobile("77102347689").withWork("699669")
+                .withEmail("Reunion@egar.com").withEmail2("Did@egar.com").withEmail3("NothingWrong@egar.com")
+                .withGroup(null).withPhoto(photo)
+                .withDay("21").withMonth("September").withYear("1658").withId(modifiedUser.getId());
+        app.user().update(user);
 
-    assertEquals(app.user().count(), before.size());
-    Users after = app.user().all();
-    assertThat(after, equalTo(
-            before.without(modifiedUser).with(user)));
-    assertTrue(photo.exists());
-  }
+        assertEquals(app.user().count(), before.size());
+        Users after = app.user().all();
+        assertThat(after, equalTo(
+                before.without(modifiedUser).with(user)));
+        assertTrue(photo.exists());
+    }
 }
