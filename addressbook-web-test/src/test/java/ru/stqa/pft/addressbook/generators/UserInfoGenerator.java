@@ -45,7 +45,7 @@ public class UserInfoGenerator {
         } else if (format.equals("xml")) {
             saveAsXML(users, new File(file));
         } else if (format.equals("json")) {
-            saveAsJson (users, new File(file));
+            saveAsJson(users, new File(file));
         } else {
             System.out.println("Неизвестный формат файла " + format);
         }
