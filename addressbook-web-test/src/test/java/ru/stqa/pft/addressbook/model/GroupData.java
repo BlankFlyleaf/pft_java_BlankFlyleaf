@@ -6,15 +6,15 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import java.util.Objects;
 
-@XStreamAlias("groups")
+ @XStreamAlias("groups")
 public class GroupData {
-    @Expose
+     @Expose
     public String name;
-    @Expose
+     @Expose
     public String header;
-    @Expose
+     @Expose
     public String footer;
-    @XStreamOmitField
+     @XStreamOmitField
     public int id = Integer.MAX_VALUE;
 
     public GroupData withId(int id) {

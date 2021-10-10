@@ -38,14 +38,14 @@ public class GroupDataGenerator {
         generator.run();
     }
 
-     private void run() throws IOException {
+    private void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
         if (format.equals("csv")) {
             saveAsCsv(groups, new File(file));
         } else if (format.equals("xml")) {
             saveAsXML(groups, new File(file));
         } else if (format.equals("json")) {
-            saveAsJson (groups, new File(file));
+            saveAsJson(groups, new File(file));
         } else {
             System.out.println("Неизвестный формат файла " + format);
         }

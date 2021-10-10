@@ -7,15 +7,15 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import java.io.File;
 import java.util.Objects;
 
-@XStreamAlias("users")
+ @XStreamAlias("users")
 public class UserInfo {
-    @Expose
+     @Expose
     public String name;
-    @Expose
+     @Expose
     public String middlename;
-    @Expose
+     @Expose
     public String lastname;
-    @Expose
+     @Expose
     public String company;
     @Expose
     public String address;
