@@ -5,12 +5,12 @@ repositories{
 }
 
 dependencies {
-    implementation 'org.testng:testng:7.4.0'
-    implementation 'org.seleniumhq.selenium:htmlunit-driver:2.53.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-4'
     implementation 'org.slf4j:slf4j-parent:2.0.0-alpha5'
     implementation 'org.slf4j:slf4j-api:1.7.32'
     implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'org.testng:testng:7.4.0'
+    implementation 'org.seleniumhq.selenium:htmlunit-driver:2.53.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-4'
     implementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.beust:jcommander:1.81'
     implementation 'com.thoughtworks.xstream:xstream:1.4.18'
