@@ -26,7 +26,7 @@ public class A_UserModificationTest extends TestBase {
     @Test
     public void testUserModificationTest() {
         Users before = app.user().all();
-        File photo = new File("src/test/resources/fine.png");
+        File photo = new File("src/test/resources/pictures/fine.png");
         UserInfo modifiedUser = before.iterator().next();
         UserInfo user = new UserInfo()
                 .withName("Crownslayer").withMiddlename("Palkovna").withLastname("Reunion")

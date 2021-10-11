@@ -79,7 +79,7 @@ public class UserInfoGenerator {
 
     private List<UserInfo> generateUsers(int count) {
         List<UserInfo> users = new ArrayList<UserInfo>();
-        File photo = new File("src/test/resources/DioDa.png");
+        File photo = new File("src/test/resources/pictures/DioDa.png");
         for (int i = 0; i < count; i++) {
             users.add(new UserInfo()
                     .withName(String.format("Amiya %s", i)).withLastname(String.format("Arknights %s", i)).withMiddlename(String.format("Lalkovna %s", i))

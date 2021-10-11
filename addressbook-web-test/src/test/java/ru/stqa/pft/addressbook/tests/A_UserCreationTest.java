@@ -25,8 +25,8 @@ public class A_UserCreationTest extends TestBase {
      @DataProvider
     public Iterator<Object[]> validUsers() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File photo = new File("src/test/resources/DioDa.png");
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.csv"));
+        File photo = new File("src/test/resources/pictures/DioDa.png");
+        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.csv"));
         String line = reader.readLine();
         while (line != null) {
             String[] split = line.split(";");
@@ -44,7 +44,7 @@ public class A_UserCreationTest extends TestBase {
 
      @DataProvider
     public Iterator<Object[]> validUsersXml() throws IOException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.xml"))) {
+         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.xml"))) {
              String xml = "";
              String line = reader.readLine();
              while (line != null) {
@@ -61,7 +61,7 @@ public class A_UserCreationTest extends TestBase {
 
      @DataProvider
     public Iterator<Object[]> validUsersJson() throws IOException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.json"))) {
+         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.json"))) {
              String json = "";
              String line = reader.readLine();
              while (line != null) {
@@ -87,9 +87,9 @@ public class A_UserCreationTest extends TestBase {
 
     @Test(enabled = false)
     public void testCurrentDir() throws Exception {
-        File currentDir = new File("src/test/resources/DioDa.png");
+        File currentDir = new File("src/test/resources/pictures/DioDa.png");
         System.out.println(currentDir.getAbsolutePath());
-        File photo = new File("src/test/resources/DioDa.png");
+        File photo = new File("src/test/resources/pictures/DioDa.png");
         System.out.println(photo.exists());
     }
 }
