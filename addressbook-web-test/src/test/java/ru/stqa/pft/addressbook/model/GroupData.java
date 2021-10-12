@@ -15,17 +15,19 @@ import java.util.Objects;
  @Entity
  @Table(name = "group_list")
 public class GroupData {
+
      @Expose
      @Column(name = "group_name")
     public String name;
+
      @Expose
-     @Column(name = "group_header")
-     @Type(type = "text")
+     @Column(name = "group_header", columnDefinition = "mediumtext")
     public String header;
+
      @Expose
-     @Column(name = "group_footer")
-     @Type(type = "text")
+     @Column(name = "group_footer", columnDefinition = "mediumtext")
     public String footer;
+
      @XStreamOmitField
      @Id
      @Column(name = "group_id")
