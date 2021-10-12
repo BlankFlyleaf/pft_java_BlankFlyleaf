@@ -7,7 +7,6 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.UserInfo;
 
 import java.util.List;
@@ -16,29 +15,28 @@ public class HBconnectionTest {
 
     private SessionFactory sessionFactory;
 
-    @BeforeClass
+    @BeforeClass(enabled = false)
     protected void setUp() throws Exception {
         // A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
         try {
-            sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-        }
-        catch (Exception e) {
+            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch (Exception e) {
             e.printStackTrace();
             // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
             // so destroy it manually.
-            StandardServiceRegistryBuilder.destroy( registry );
+            StandardServiceRegistryBuilder.destroy(registry);
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void testHBConnection() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<UserInfo> result = session.createQuery( "from UserInfo where deprecated = '0000-00-00'" ).list();
-        for ( UserInfo user : (List<UserInfo>) result ) {
+        List<UserInfo> result = session.createQuery("from UserInfo where deprecated = '0000-00-00'").list();
+        for (UserInfo user : (List<UserInfo>) result) {
             System.out.println(user);
         }
         session.getTransaction().commit();

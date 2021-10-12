@@ -93,6 +93,7 @@ public class UserHelper extends HelperBase {
     }
 
     public void create(UserInfo user) {
+        returnHome();
         addNew();
         fillInfo(user, true);
         submitUser();
@@ -101,14 +102,16 @@ public class UserHelper extends HelperBase {
     }
 
     public void update(UserInfo user) {
+        returnHome();
         modificateById(user.getId());
         fillInfo(user, false);
         updateUser();
         userCashe = null;
-        returnHomePage();
+        returnHome();
     }
 
     public void delete(UserInfo user) {
+        returnHome();
         selectById(user.getId());
         deleteUser();
         isAlert();

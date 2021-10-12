@@ -20,6 +20,7 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
     private final String browser;
+    private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -29,6 +30,8 @@ public class ApplicationManager {
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
         properties.load(new FileReader(String.format("src/test/resources/configuration/%s.properties", target)));
+
+        dbHelper = new DbHelper();
 
         if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
@@ -61,6 +64,10 @@ public class ApplicationManager {
 
     public UserHelper user() {
         return userHelper;
+    }
+
+    public DbHelper db() {
+        return dbHelper;
     }
 }
 

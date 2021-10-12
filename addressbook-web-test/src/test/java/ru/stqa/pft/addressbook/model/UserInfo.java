@@ -79,7 +79,7 @@ public class UserInfo {
     @Transient
     public String allMails;
 
-    @Expose
+    @Transient
     @Column(name = "photo", columnDefinition = "mediumtext")
     public String photo;
 
@@ -272,11 +272,11 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return id == userInfo.id && Objects.equals(name, userInfo.name) && Objects.equals(lastname, userInfo.lastname);
+        return id == userInfo.id && Objects.equals(name, userInfo.name) && Objects.equals(middlename, userInfo.middlename) && Objects.equals(lastname, userInfo.lastname) && Objects.equals(company, userInfo.company) && Objects.equals(address, userInfo.address) && Objects.equals(home, userInfo.home) && Objects.equals(mobile, userInfo.mobile) && Objects.equals(work, userInfo.work) && Objects.equals(email1, userInfo.email1) && Objects.equals(email2, userInfo.email2) && Objects.equals(email3, userInfo.email3) && Objects.equals(day, userInfo.day) && Objects.equals(month, userInfo.month) && Objects.equals(year, userInfo.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, lastname, id);
+        return Objects.hash(name, middlename, lastname, company, address, home, mobile, work, email1, email2, email3, day, month, year, id);
     }
 }

@@ -10,22 +10,22 @@ import java.io.File;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class A_UserModificationTest extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
         if (app.user().all().size() == 0) {
+            File photo = new File("src/test/resources/pictures/fine.png");
             app.user().create(new UserInfo()
                     .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
-                    .withDay("21").withMonth("September"));
+                    .withDay("21").withMonth("September").withPhoto(photo));
         }
     }
 
     @Test
     public void testUserModificationTest() {
-        Users before = app.user().all();
+        Users before = app.db().users();
         File photo = new File("src/test/resources/pictures/fine.png");
         UserInfo modifiedUser = before.iterator().next();
         UserInfo user = new UserInfo()
@@ -38,9 +38,8 @@ public class A_UserModificationTest extends TestBase {
         app.user().update(user);
 
         assertEquals(app.user().count(), before.size());
-        Users after = app.user().all();
+        Users after = app.db().users();
         assertThat(after, equalTo(
-                before.without(modifiedUser).with(user)));
-        assertTrue(photo.exists());
+                before.without(user).with(modifiedUser)));
     }
 }

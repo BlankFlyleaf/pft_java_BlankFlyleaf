@@ -22,7 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class A_UserCreationTest extends TestBase {
 
-     @DataProvider
+    @DataProvider
     public Iterator<Object[]> validUsers() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
         File photo = new File("src/test/resources/pictures/DioDa.png");
@@ -42,45 +42,45 @@ public class A_UserCreationTest extends TestBase {
         return list.iterator();
     }
 
-     @DataProvider
+    @DataProvider
     public Iterator<Object[]> validUsersXml() throws IOException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.xml"))) {
-             String xml = "";
-             String line = reader.readLine();
-             while (line != null) {
-                 xml += line;
-                 line = reader.readLine();
-             }
-             XStream xstream = new XStream();
-             xstream.allowTypes(new Class[]{UserInfo.class});
-             xstream.processAnnotations(UserInfo.class);
-             List<UserInfo> users = (List<UserInfo>) xstream.fromXML(xml);
-             return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
-         }
-     }
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.xml"))) {
+            String xml = "";
+            String line = reader.readLine();
+            while (line != null) {
+                xml += line;
+                line = reader.readLine();
+            }
+            XStream xstream = new XStream();
+            xstream.allowTypes(new Class[]{UserInfo.class});
+            xstream.processAnnotations(UserInfo.class);
+            List<UserInfo> users = (List<UserInfo>) xstream.fromXML(xml);
+            return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
+        }
+    }
 
-     @DataProvider
+    @DataProvider
     public Iterator<Object[]> validUsersJson() throws IOException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.json"))) {
-             String json = "";
-             String line = reader.readLine();
-             while (line != null) {
-                 json += line;
-                 line = reader.readLine();
-             }
-             Gson gson = new Gson();
-             List<UserInfo> users = gson.fromJson(json, new TypeToken<List<UserInfo>>() {
-             }.getType());
-             return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
-         }
-     }
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.json"))) {
+            String json = "";
+            String line = reader.readLine();
+            while (line != null) {
+                json += line;
+                line = reader.readLine();
+            }
+            Gson gson = new Gson();
+            List<UserInfo> users = gson.fromJson(json, new TypeToken<List<UserInfo>>() {
+            }.getType());
+            return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
+        }
+    }
 
     @Test(dataProvider = "validUsersXml")
     public void testUserCreation(UserInfo user) throws Exception {
-        Users before = app.user().all();
+        Users before = app.db().users();
         app.user().create(user);
         assertThat(app.user().count(), equalTo(before.size() + 1));
-        Users after = app.user().all();
+        Users after = app.db().users();
         assertThat(after, equalTo(
                 before.with(user.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
