@@ -24,7 +24,7 @@ public class UserInfoGenerator {
     public String file;
 
     @Parameter(names = "-f", description = "File Format")
-     public String format;
+    public String format;
 
     public static void main(String args[]) throws IOException {
         UserInfoGenerator generator = new UserInfoGenerator();
@@ -55,7 +55,7 @@ public class UserInfoGenerator {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(users);
         try (Writer writer = new FileWriter(file)) {
-        writer.write(json);
+            writer.write(json);
         }
     }
 
