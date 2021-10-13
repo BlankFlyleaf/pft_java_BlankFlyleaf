@@ -30,6 +30,7 @@ public class A_UserMailTest extends TestBase {
 
         assertThat(user.getAllMails(), equalTo(mergeMails(UserinfoFromEditForm)));
         assertThat(user.getAddress(), equalTo(checkAddress(UserinfoFromEditForm)));
+        app.user().returnHome();
     }
 
     private String mergeMails(UserInfo user) {

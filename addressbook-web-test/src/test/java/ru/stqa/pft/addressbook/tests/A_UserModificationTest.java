@@ -40,6 +40,6 @@ public class A_UserModificationTest extends TestBase {
         assertEquals(app.user().count(), before.size());
         Users after = app.db().users();
         assertThat(after, equalTo(
-                before.without(user).with(modifiedUser)));
+                after.without(modifiedUser).with(user)));
     }
 }
