@@ -102,6 +102,7 @@ public class UserHelper extends HelperBase {
     }
 
     public void update(UserInfo user) {
+        returnHome();
         modificateById(user.getId());
         fillInfo(user, false);
         updateUser();

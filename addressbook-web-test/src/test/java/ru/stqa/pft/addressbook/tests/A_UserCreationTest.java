@@ -83,6 +83,7 @@ public class A_UserCreationTest extends TestBase {
         Users after = app.db().users();
         assertThat(after, equalTo(
                 before.with(user.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+        verifyUsersInUi();
     }
 
     @Test(enabled = false)
