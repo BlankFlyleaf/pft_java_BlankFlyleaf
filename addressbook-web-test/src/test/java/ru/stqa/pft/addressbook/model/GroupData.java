@@ -4,11 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("groups")
 @Entity
@@ -31,6 +30,13 @@ public class GroupData {
     @Id
     @Column(name = "group_id")
     public int id = Integer.MAX_VALUE;
+
+    @ManyToMany (mappedBy = "groups")
+    private Set<UserInfo> users = new HashSet<UserInfo>();
+
+    public Users getUsers() {
+        return new Users(users);
+    }
 
     public GroupData withId(int id) {
         this.id = id;

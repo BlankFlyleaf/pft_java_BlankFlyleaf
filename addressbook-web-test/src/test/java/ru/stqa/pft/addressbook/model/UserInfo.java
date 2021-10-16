@@ -6,7 +6,9 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("users")
 @Entity
@@ -69,9 +71,10 @@ public class UserInfo {
     @Column(name = "byear", columnDefinition = "TINYINT")
     public String year;
 
-    @Expose
-    @Transient
-    public String group;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
 
     @Transient
     public String allPhones;
@@ -87,6 +90,10 @@ public class UserInfo {
     @Id
     @Column(name = "id")
     public int id;
+
+    public Groups getGroups() {
+        return new Groups(groups);
+    }
 
     public File getPhoto() {
         return new File(photo);
@@ -150,10 +157,6 @@ public class UserInfo {
 
     public String getYear() {
         return year;
-    }
-
-    public String getGroup() {
-        return group;
     }
 
     public int getId() {
@@ -254,11 +257,6 @@ public class UserInfo {
         return this;
     }
 
-    public UserInfo withGroup(String group) {
-        this.group = group;
-        return this;
-    }
-
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -285,5 +283,10 @@ public class UserInfo {
     @Override
     public int hashCode() {
         return Objects.hash(name, middlename, lastname, company, address, home, mobile, work, email1, email2, email3, day, month, year, id);
+    }
+
+    public UserInfo inGroups(GroupData group) {
+        groups.add(group);
+        return this;
     }
 }

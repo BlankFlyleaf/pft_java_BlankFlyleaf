@@ -18,7 +18,7 @@ public class A_UserDeletionTest extends TestBase {
         if (app.db().users().size() == 0) {
             File photo = new File("src/test/resources/pictures/fine.png");
             app.user().create(new UserInfo()
-                    .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
+                    .withName("Amiya").withLastname("Arknights")
                     .withDay("21").withMonth("September").withPhoto(photo));
         }
     }

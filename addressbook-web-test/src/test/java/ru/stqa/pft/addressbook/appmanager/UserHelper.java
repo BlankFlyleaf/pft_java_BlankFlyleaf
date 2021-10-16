@@ -40,7 +40,10 @@ public class UserHelper extends HelperBase {
         choose(userInfo.getDay(), By.name("bday"));
         choose(userInfo.getMonth(), By.name("bmonth"));
         if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userInfo.getGroup());
+            if (userInfo.getGroups().size() > 0) {
+                Assert.assertTrue(userInfo.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userInfo.getGroups().iterator().next().getName());
+            }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }

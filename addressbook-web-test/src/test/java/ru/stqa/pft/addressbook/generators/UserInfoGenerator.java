@@ -6,6 +6,7 @@ import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
+import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.UserInfo;
 
 import java.io.File;
@@ -84,7 +85,7 @@ public class UserInfoGenerator {
             users.add(new UserInfo()
                     .withName(String.format("Amiya %s", i)).withLastname(String.format("Arknights %s", i)).withMiddlename(String.format("Lalkovna %s", i))
                     .withDay("21").withMonth("September").withYear("1658")
-                    .withGroup(String.format("Lalka")).withCompany(String.format("Egar")).withPhoto(photo)
+                    .withCompany(String.format("Egar")).withPhoto(photo)
                     .withAddress(String.format("Voronezh\nSezam street 33"))
                     .withHome(String.format("230539")).withMobile(String.format("77012347689")).withWork(String.format("490567"))
                     .withEmail(String.format("lalka@egar.com")).withEmail2(String.format("palka@egar.com")).withEmail3(String.format("lulka@egar.com")));

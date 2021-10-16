@@ -18,7 +18,7 @@ public class A_UserModificationTest extends TestBase {
         if (app.user().all().size() == 0) {
             File photo = new File("src/test/resources/pictures/fine.png");
             app.user().create(new UserInfo()
-                    .withName("Amiya").withLastname("Arknights").withGroup("Lalka")
+                    .withName("Amiya").withLastname("Arknights")
                     .withDay("21").withMonth("September").withPhoto(photo));
         }
     }
@@ -32,8 +32,7 @@ public class A_UserModificationTest extends TestBase {
                 .withName("Crownslayer").withMiddlename("Palkovna").withLastname("Reunion")
                 .withCompany("Egar").withAddress("Voronezh\nSezam street 33")
                 .withHome("240539").withMobile("77102347689").withWork("699669")
-                .withEmail("Reunion@egar.com").withEmail2("Did@egar.com").withEmail3("NothingWrong@egar.com")
-                .withGroup(null).withPhoto(photo)
+                .withEmail("Reunion@egar.com").withEmail2("Did@egar.com").withEmail3("NothingWrong@egar.com").withPhoto(photo)
                 .withDay("21").withMonth("September").withYear("1658").withId(modifiedUser.getId());
         app.user().update(user);
 

@@ -5,6 +5,8 @@ import com.thoughtworks.xstream.XStream;
 import org.openqa.selenium.json.TypeToken;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.UserInfo;
 import ru.stqa.pft.addressbook.model.Users;
 
@@ -25,6 +27,7 @@ public class A_UserCreationTest extends TestBase {
     @DataProvider
     public Iterator<Object[]> validUsers() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
+        Groups groups = app.db().groups();
         File photo = new File("src/test/resources/pictures/DioDa.png");
         BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/usersfiles/users.csv"));
         String line = reader.readLine();
@@ -35,7 +38,7 @@ public class A_UserCreationTest extends TestBase {
                     .withAddress("Voronezh\nSezam street 33")
                     .withHome("230539").withMobile("77012347689").withWork("490567")
                     .withEmail("lalka@egar.com").withEmail2("palka@egar.com").withEmail3("lulka@egar.com")
-                    .withGroup("Lalka").withCompany("Egar").withPhoto(photo)
+                    .inGroups(groups.iterator().next()).withCompany("Egar").withPhoto(photo)
                     .withDay("21").withMonth("September").withYear("1658")});
             line = reader.readLine();
         }

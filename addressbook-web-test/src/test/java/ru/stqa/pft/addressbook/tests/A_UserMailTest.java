@@ -16,7 +16,7 @@ public class A_UserMailTest extends TestBase {
         if (app.user().all().size() == 0) {
             app.user().create(new UserInfo()
                     .withName("Amiya").withLastname("Arknights")
-                    .withGroup("Lalka").withDay("21").withMonth("September")
+                    .withDay("21").withMonth("September")
                     .withAddress("Voronezh\nSezam street 33")
                     .withEmail("lalka@egar.com").withEmail2("palka@egar.com").withEmail3("lulka@egar.com"));
         }
@@ -27,7 +27,6 @@ public class A_UserMailTest extends TestBase {
         app.user().returnHome();
         UserInfo user = app.user().all().iterator().next();
         UserInfo UserinfoFromEditForm = app.user().infoFromEditForm(user);
-
         assertThat(user.getAllMails(), equalTo(mergeMails(UserinfoFromEditForm)));
         assertThat(user.getAddress(), equalTo(checkAddress(UserinfoFromEditForm)));
         app.user().returnHome();

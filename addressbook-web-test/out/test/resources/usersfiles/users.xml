@@ -15,7 +15,7 @@ Sezam street 33</address>
     <day>21</day>
     <month>September</month>
     <year>1658</year>
-    <group>Lalka</group>
+    <groups/>
     <photo>src\test\resources\pictures\DioDa.png</photo>
   </users>
   <users>
@@ -34,7 +34,7 @@ Sezam street 33</address>
     <day>21</day>
     <month>September</month>
     <year>1658</year>
-    <group>Lalka</group>
+    <groups/>
     <photo>src\test\resources\pictures\DioDa.png</photo>
   </users>
 </list>
