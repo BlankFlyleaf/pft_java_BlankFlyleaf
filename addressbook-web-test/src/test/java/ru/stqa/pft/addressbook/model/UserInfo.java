@@ -263,16 +263,7 @@ public class UserInfo {
     public String toString() {
         return "UserInfo{" +
                 "name='" + name + '\'' +
-                ", middlename='" + middlename + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", company='" + company + '\'' +
-                ", address='" + address + '\'' +
-                ", home='" + home + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", work='" + work + '\'' +
-                ", email1='" + email1 + '\'' +
-                ", email2='" + email2 + '\'' +
-                ", email3='" + email3 + '\'' +
                 ", id=" + id +
                 '}';
     }

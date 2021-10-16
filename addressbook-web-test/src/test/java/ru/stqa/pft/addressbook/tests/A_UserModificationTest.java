@@ -29,7 +29,7 @@ public class A_UserModificationTest extends TestBase {
         File photo = new File("src/test/resources/pictures/fine.png");
         UserInfo modifiedUser = before.iterator().next();
         UserInfo user = new UserInfo()
-                .withName("ACrownslayer").withMiddlename("Palkovna").withLastname("Reunion")
+                .withName("Crownslayer").withMiddlename("Palkovna").withLastname("Reunion")
                 .withCompany("Egar").withAddress("Voronezh\nSezam street 33")
                 .withHome("240539").withMobile("77102347689").withWork("699669")
                 .withEmail("Reunion@egar.com").withEmail2("Did@egar.com").withEmail3("NothingWrong@egar.com")
