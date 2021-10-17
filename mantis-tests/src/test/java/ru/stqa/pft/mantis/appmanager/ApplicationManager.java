@@ -17,6 +17,7 @@ public class ApplicationManager {
     private final Properties properties;
     private final String browser;
     private RegistrationHelper registrationHelper;
+    private FtpHelper ftp;
 
 
     public ApplicationManager(String browser) {
@@ -31,24 +32,25 @@ public class ApplicationManager {
 
 
     public void logOutStop() {
-        if (wd != null){
+        if (wd != null) {
             wd.quit();
         }
     }
 
-    public HttpSession newSession(){
+    public HttpSession newSession() {
         return new HttpSession(this);
     }
-    public String getProperty(String key){
+
+    public String getProperty(String key) {
         return properties.getProperty(key);
     }
 
 
     public RegistrationHelper registration() {
-        if (registrationHelper == null){
+        if (registrationHelper == null) {
             registrationHelper = new RegistrationHelper(this);
         }
-        return  registrationHelper;
+        return registrationHelper;
     }
 
     public WebDriver getDriver() {
@@ -66,6 +68,13 @@ public class ApplicationManager {
 
         }
         return wd;
+    }
+
+    public FtpHelper ftp() {
+        if (ftp == null) {
+            ftp = new FtpHelper(this);
+        }
+        return ftp;
     }
 }
 
