@@ -14,6 +14,7 @@ public class HelperBase {
 
     public HelperBase(ApplicationManager app) {
         this.app = app;
+        wd = app.getDriver();
     }
 
     protected void type(By locator, String text) {
